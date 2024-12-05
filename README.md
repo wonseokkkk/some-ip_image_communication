@@ -80,7 +80,7 @@ git checkout 3.2.0
 mkdir build
 cd build
 cmake ..
-make -j6
+make -j12
 sudo make install
 ```
 
@@ -110,7 +110,7 @@ git checkout 3.1.20.3
 mkdir build
 cd build
 cmake -DENABLE_SIGNAL_HANDLING=1 -DDIAGNOSIS_ADDRESS=0x10 ..
-make -j6
+make -j12
 sudo make install
 ```
 
@@ -137,7 +137,7 @@ git checkout 3.2.0
 mkdir build
 cd build
 cmake -DUSE_INSTALLED_COMMONAPI=OFF ..
-make -j6
+make -j12
 sudo make install
 
 ```
