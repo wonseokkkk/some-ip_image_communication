@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = cluster1.0.0
-DISTDIR = /home/avees/pfifo/Cluster/src/.tmp/cluster1.0.0
+DISTDIR = /home/avees/some_ws/some-ip_image_communication/Cluster/src/.tmp/cluster1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -L/usr/local/cuda/lib${SYSTEM_TYPE} -L/usr/local/lib/ -lCommonAPI -lCommonAPI-SomeIP -lvsomeip3 -L/usr/lib/x86_64-linux-gnu/ -lopencv_core -lopencv_videoio -lopencv_ml -lopencv_objdetect -lopencv_stitching -lopencv_calib3d -lopencv_photo -lopencv_video -lopencv_dnn -lopencv_imgcodecs -lopencv_flann -lopencv_features2d -lopencv_imgproc -lopencv_highgui -L/usr/lib/aarch64-linux-gnu -lnvinfer -lnvparsers -lnvinfer_plugin -L/usr/local/cuda/lib64 -lcudart /usr/lib/aarch64-linux-gnu/libQt5Quick.so /usr/lib/aarch64-linux-gnu/libQt5Multimedia.so /usr/lib/aarch64-linux-gnu/libQt5Gui.so /usr/lib/aarch64-linux-gnu/libQt5Qml.so /usr/lib/aarch64-linux-gnu/libQt5Network.so /usr/lib/aarch64-linux-gnu/libQt5Core.so /usr/lib/aarch64-linux-gnu/libGL.so -lpthread   
@@ -102,6 +102,9 @@ DIST          = coco.names \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri \
@@ -113,6 +116,8 @@ DIST          = coco.names \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
@@ -137,7 +142,12 @@ DIST          = coco.names \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkit.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -224,6 +234,9 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri \
@@ -235,6 +248,8 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
@@ -259,7 +274,12 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkit.pri \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -307,6 +327,9 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designer_private.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri:
@@ -318,6 +341,8 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_glx_support_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_gui_private.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_help_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
@@ -342,7 +367,12 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_testlib_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_theme_support_private.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uiplugin.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_uitools_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkit.pri:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_webkitwidgets.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_widgets_private.pri:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
@@ -587,7 +617,7 @@ moc_ClusterStubImpl.cpp: ClusterStubImpl.hpp \
 		include/yolov7/mains.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/avees/pfifo/Cluster/src/moc_predefs.h -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/avees/pfifo/Cluster/src -I/home/avees/pfifo/src-gen-cluster -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include -I/usr/include/opencv4 -I/include -I/home/avees/pfifo/Cluster/src/include -I/home/avees/pfifo/Cluster/src/include/yolov7 -I/home/avees/pfifo/Cluster/src/include/yolov7/include -I/home/avees/pfifo/Cluster/src/include/yolov7/src -I/home/avees/pfifo/Cluster/src/include/yolov7/plugin -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu/qt5 -I/usr/include/aarch64-linux-gnu/qt5/QtQuick -I/usr/include/aarch64-linux-gnu/qt5/QtMultimedia -I/usr/include/aarch64-linux-gnu/qt5/QtGui -I/usr/include/aarch64-linux-gnu/qt5/QtQml -I/usr/include/aarch64-linux-gnu/qt5/QtNetwork -I/usr/include/aarch64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/aarch64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/aarch64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/aarch64-linux-gnu/7/include-fixed -I/usr/include/aarch64-linux-gnu -I/usr/include ClusterStubImpl.hpp -o moc_ClusterStubImpl.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/avees/some_ws/some-ip_image_communication/Cluster/src/moc_predefs.h -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/avees/some_ws/some-ip_image_communication/Cluster/src -I/home/avees/some_ws/some-ip_image_communication/src-gen-cluster -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include -I/usr/include/opencv4 -I/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7 -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/src -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/plugin -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu/qt5 -I/usr/include/aarch64-linux-gnu/qt5/QtQuick -I/usr/include/aarch64-linux-gnu/qt5/QtMultimedia -I/usr/include/aarch64-linux-gnu/qt5/QtGui -I/usr/include/aarch64-linux-gnu/qt5/QtQml -I/usr/include/aarch64-linux-gnu/qt5/QtNetwork -I/usr/include/aarch64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/aarch64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/aarch64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/aarch64-linux-gnu/7/include-fixed -I/usr/include/aarch64-linux-gnu -I/usr/include ClusterStubImpl.hpp -o moc_ClusterStubImpl.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
