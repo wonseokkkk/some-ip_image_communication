@@ -8,6 +8,18 @@
 #include <fstream>
 #include <NvInfer.h>
 
+//QT
+#include <QApplication>
+#include <QLabel>
+#include <QPixmap>
+#include <QBitmap>
+#include <QImage>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QPainter>
+#include <QThread>
+#include "ui_cluster.h"
+
 //
 // TensorRT
 #include "config.h"
@@ -38,7 +50,7 @@ extern float* output_buffer_host2;
 class ClusterStubImpl: public QObject, public v1_0::commonapi::ClusterStubDefault {
     Q_OBJECT
 public:
-    ClusterStubImpl();
+    ClusterStubImpl(Ui::MainWindow* ui);
     virtual ~ClusterStubImpl();
     virtual void sendImage1(const std::shared_ptr<CommonAPI::ClientId> _client, std::vector< uint8_t > _image1);
     virtual void sendImage2(const std::shared_ptr<CommonAPI::ClientId> _client, std::vector< uint8_t > _image2);
@@ -52,6 +64,7 @@ private:
     static std::chrono::high_resolution_clock::time_point lastTimestamp4;
     static double totalFPS1, totalFPS2, totalFPS3, totalFPS4;
     static int frameCount1, frameCount2, frameCount3, frameCount4;
+    Ui::MainWindow* ui_;
 
 
 //signals:
