@@ -12,7 +12,7 @@ std::chrono::high_resolution_clock::time_point ClusterStubImpl::lastTimestamp2 =
 std::chrono::high_resolution_clock::time_point ClusterStubImpl::lastTimestamp3 = std::chrono::high_resolution_clock::now();
 std::chrono::high_resolution_clock::time_point ClusterStubImpl::lastTimestamp4 = std::chrono::high_resolution_clock::now();
 
-ClusterStubImpl::ClusterStubImpl() {
+ClusterStubImpl::ClusterStubImpl(Ui::MainWindow* ui) : ui_(ui) {
     // last_fps_time = std::chrono::high_resolution_clock::now();
  }
 ClusterStubImpl::~ClusterStubImpl() { }
@@ -37,15 +37,15 @@ void ClusterStubImpl::sendImage1(const std::shared_ptr<CommonAPI::ClientId> _cli
     std::thread([this, _client, _image1]() {
         cv::Mat decoded_image1 = cv::imdecode(_image1, cv::IMREAD_COLOR);
 
-        std::vector<cv::Mat> img_vector1 = {decoded_image1};  // img_vector를 생성
+//        std::vector<cv::Mat> img_vector1 = {decoded_image1};  // img_vector를 생성
 
         // Preprocess
-        cuda_batch_preprocess(img_vector1, device_buffers1[0], kInputW, kInputH, stream1);  // img_vector를 전달
+//        cuda_batch_preprocess(img_vector1, device_buffers1[0], kInputW, kInputH, stream1);  // img_vector를 전달
         
         // Run inference
         // auto start = std::chrono::system_clock::now();
         // auto start_time = std::chrono::high_resolution_clock::now();
-        infer(*context1, stream1, (void**)device_buffers1, output_buffer_host1, 1);  // Assuming batch size of 1
+//        infer(*context1, stream1, (void**)device_buffers1, output_buffer_host1, 1);  // Assuming batch size of 1
         // auto end_time = std::chrono::high_resolution_clock::now() ;
         // auto execution_time = std::chrono::duration<double>(end_time - start_time).count();
         // std::cout << "time :" << execution_time << std::endl;
@@ -54,14 +54,22 @@ void ClusterStubImpl::sendImage1(const std::shared_ptr<CommonAPI::ClientId> _cli
         // std::cout << "inference time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
 
         // NMS
-        std::vector<std::vector<Detection>> res_batch;
-        batch_nms(res_batch, output_buffer_host1, 1, kOutputSize, kConfThresh, kNmsThresh);  // Assuming batch size of 1
+//        std::vector<std::vector<Detection>> res_batch;
+//        batch_nms(res_batch, output_buffer_host1, 1, kOutputSize, kConfThresh, kNmsThresh);  // Assuming batch size of 1
 
         // Draw bounding boxes
-        draw_bbox(img_vector1, res_batch);  // img_vector를 전달
+//        draw_bbox(img_vector1, res_batch);  // img_vector를 전달
+//
+	cv::Mat& image = decoded_image1;
+	QImage qimage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888);
+	QImage rgb_image = qimage.rgbSwapped();
 
-        cv::imshow("Decoded Image1 with TensorRT", decoded_image1);
-        char key = cv::waitKey(1);
+	QMetaObject::invokeMethod(this, [this, rgb_image]() {
+		ui_->cameraLabel->setPixmap(QPixmap::fromImage(rgb_image));
+	});
+
+//        cv::imshow("Decoded Image1", decoded_image1);
+//        cv::waitKey(1);
         // if (key == '1') {
         //     result1 = 1;
         //     std::cout << "Order Emergency2" << std::endl;
@@ -91,30 +99,35 @@ void ClusterStubImpl::sendImage2(const std::shared_ptr<CommonAPI::ClientId> _cli
     std::thread([this, _client, _image2]() {
         //std::cout << "Hi im come!!!" << std::endl;
         cv::Mat decoded_image2 = cv::imdecode(_image2, cv::IMREAD_COLOR);
+	if (decoded_image2.empty()){
+	    std::cout << "image empty" << std::endl;
+	}
         
-        std::vector<cv::Mat> img_vector2 = {decoded_image2};  // img_vector를 생성
+//        std::vector<cv::Mat> img_vector2 = {decoded_image2};  // img_vector를 생성
 
         // Preprocess
-        cuda_batch_preprocess(img_vector2, device_buffers2[0], kInputW, kInputH, stream2);  // img_vector를 전달
+//        cuda_batch_preprocess(img_vector2, device_buffers2[0], kInputW, kInputH, stream2);  // img_vector를 전달
         
         // Run inference
         // auto start = std::chrono::system_clock::now();
-        infer(*context2, stream2, (void**)device_buffers2, output_buffer_host2, 1);  // Assuming batch size of 1
+//        infer(*context2, stream2, (void**)device_buffers2, output_buffer_host2, 1);  // Assuming batch size of 1
         // auto end = std::chrono::system_clock::now();
         // std::cout << "inference time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
         // NMS
-        std::vector<std::vector<Detection>> res_batch;
-        batch_nms(res_batch, output_buffer_host2, 1, kOutputSize, kConfThresh, kNmsThresh);  // Assuming batch size of 1
+//        std::vector<std::vector<Detection>> res_batch;
+//        batch_nms(res_batch, output_buffer_host2, 1, kOutputSize, kConfThresh, kNmsThresh);  // Assuming batch size of 1
 
         // Draw bounding boxes
-        draw_bbox(img_vector2, res_batch);  // img_vector를 전달
+//        draw_bbox(img_vector2, res_batch);  // img_vector를 전달
 
-        cv::imshow("Decoded Image2 with TensorRT", decoded_image2);
-        char key = cv::waitKey(1) & 0xFF;
-        if (key == '2') {
-            // result2 = 1 - result2;
-        }
+        cv::imshow("Decoded Image", decoded_image2);
+        cv::waitKey(1);
+//        char key = cv::waitKey(1) & 0xFF;
+//        if (key == '2') {
+//            // result2 = 1 - result2;
+//        }
         
+        frame_counter++;  // 프레임 카운터 증가
 
     }).detach();
 }

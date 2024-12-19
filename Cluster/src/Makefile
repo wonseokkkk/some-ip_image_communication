@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../src-gen-cluster -isystem /usr/local/include/CommonAPI-3.2 -isystem /usr/local/include/CommonAPI-3.2 -isystem /usr/local/include -isystem /usr/include/opencv4 -I/include -Iinclude -Iinclude/yolov7 -Iinclude/yolov7/include -Iinclude/yolov7/src -Iinclude/yolov7/plugin -I/usr/local/cuda/include -isystem /usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtQuick -isystem /usr/include/aarch64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtQml -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I. -I../../src-gen-cluster -isystem /usr/local/include/CommonAPI-3.2 -isystem /usr/local/include/CommonAPI-3.2 -isystem /usr/local/include -isystem /usr/include/opencv4 -I/include -Iinclude -Iinclude/yolov7 -Iinclude/yolov7/include -Iinclude/yolov7/src -Iinclude/yolov7/plugin -I/usr/local/cuda/include -isystem /usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtQuick -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtQml -isystem /usr/include/aarch64-linux-gnu/qt5/QtNetwork -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = cluster1.0.0
 DISTDIR = /home/avees/some_ws/some-ip_image_communication/Cluster/src/.tmp/cluster1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -L/usr/local/cuda/lib${SYSTEM_TYPE} -L/usr/local/lib/ -lCommonAPI -lCommonAPI-SomeIP -lvsomeip3 -L/usr/lib/x86_64-linux-gnu/ -lopencv_core -lopencv_videoio -lopencv_ml -lopencv_objdetect -lopencv_stitching -lopencv_calib3d -lopencv_photo -lopencv_video -lopencv_dnn -lopencv_imgcodecs -lopencv_flann -lopencv_features2d -lopencv_imgproc -lopencv_highgui -L/usr/lib/aarch64-linux-gnu -lnvinfer -lnvparsers -lnvinfer_plugin -L/usr/local/cuda/lib64 -lcudart /usr/lib/aarch64-linux-gnu/libQt5Quick.so /usr/lib/aarch64-linux-gnu/libQt5Multimedia.so /usr/lib/aarch64-linux-gnu/libQt5Gui.so /usr/lib/aarch64-linux-gnu/libQt5Qml.so /usr/lib/aarch64-linux-gnu/libQt5Network.so /usr/lib/aarch64-linux-gnu/libQt5Core.so /usr/lib/aarch64-linux-gnu/libGL.so -lpthread   
+LIBS          = $(SUBLIBS) -L/usr/local/cuda/lib${SYSTEM_TYPE} -L/usr/local/lib/ -lCommonAPI -lCommonAPI-SomeIP -lvsomeip3 -L/usr/lib/x86_64-linux-gnu/ -lopencv_core -lopencv_videoio -lopencv_ml -lopencv_objdetect -lopencv_stitching -lopencv_calib3d -lopencv_photo -lopencv_video -lopencv_dnn -lopencv_imgcodecs -lopencv_flann -lopencv_features2d -lopencv_imgproc -lopencv_highgui -L/usr/lib/aarch64-linux-gnu -lnvinfer -lnvparsers -lnvinfer_plugin -L/usr/local/cuda/lib64 -lcudart /usr/lib/aarch64-linux-gnu/libQt5Quick.so /usr/lib/aarch64-linux-gnu/libQt5Widgets.so /usr/lib/aarch64-linux-gnu/libQt5Multimedia.so /usr/lib/aarch64-linux-gnu/libQt5Gui.so /usr/lib/aarch64-linux-gnu/libQt5Qml.so /usr/lib/aarch64-linux-gnu/libQt5Network.so /usr/lib/aarch64-linux-gnu/libQt5Core.so /usr/lib/aarch64-linux-gnu/libGL.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -168,6 +168,7 @@ DIST          = coco.names \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -214,7 +215,7 @@ TARGET        = cluster
 first: all
 ####### Build rules
 
-cluster:  $(OBJECTS)  
+cluster: ui_cluster.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -300,6 +301,7 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/resources.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/moc.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/uic.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/qmake_use.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/file_copies.prf \
@@ -393,6 +395,7 @@ Makefile: cluster.pro /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++/qmake.con
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/resources.prf:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/moc.prf:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/opengl.prf:
+/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/uic.prf:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/unix/thread.prf:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/qmake_use.prf:
 /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/file_copies.prf:
@@ -421,6 +424,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../src-gen-cluster/v1/commonapi/Cluster.hpp ../../src-gen-cluster/v1/commonapi/ClusterProxy.hpp ../../src-gen-cluster/v1/commonapi/ClusterProxyBase.hpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPDeployment.hpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPProxy.hpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPStubAdapter.hpp ../../src-gen-cluster/v1/commonapi/ClusterStub.hpp ../../src-gen-cluster/v1/commonapi/ClusterStubDefault.hpp ClusterStubImpl.hpp include/yolov7/mains.h include/yolov7/include/block.h include/yolov7/include/calibrator.h include/yolov7/include/config.h include/yolov7/include/cuda_utils.h include/yolov7/include/logging.h include/yolov7/include/macros.h include/yolov7/include/model.h include/yolov7/include/types.h include/yolov7/include/utils.h include/yolov7/plugin/yololayer.h include/yolov7/include/postprocess.h include/yolov7/include/preprocess.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPDeployment.cpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPProxy.cpp ../../src-gen-cluster/v1/commonapi/ClusterSomeIPStubAdapter.cpp ClusterStubImpl.cpp include/yolov7/mains.cpp include/yolov7/src/block.cpp include/yolov7/src/calibrator.cpp include/yolov7/src/model.cpp include/yolov7/src/postprocess.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents cluster.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -529,6 +533,7 @@ compiler_rcc_clean:
 qrc_qml.cpp: qml.qrc \
 		/usr/lib/qt5/bin/rcc \
 		main.qml \
+		ui/aa.png \
 		image/rpm.png \
 		image/warning.png \
 		image/back.png \
@@ -551,6 +556,7 @@ moc_ClusterStubImpl.cpp: ClusterStubImpl.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStubDefault.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStub.hpp \
 		../../src-gen-cluster/v1/commonapi/Cluster.hpp \
+		ui_cluster.h \
 		include/yolov7/include/config.h \
 		include/yolov7/include/model.h \
 		include/yolov7/include/cuda_utils.h \
@@ -617,19 +623,26 @@ moc_ClusterStubImpl.cpp: ClusterStubImpl.hpp \
 		include/yolov7/mains.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/avees/some_ws/some-ip_image_communication/Cluster/src/moc_predefs.h -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/avees/some_ws/some-ip_image_communication/Cluster/src -I/home/avees/some_ws/some-ip_image_communication/src-gen-cluster -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include -I/usr/include/opencv4 -I/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7 -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/src -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/plugin -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu/qt5 -I/usr/include/aarch64-linux-gnu/qt5/QtQuick -I/usr/include/aarch64-linux-gnu/qt5/QtMultimedia -I/usr/include/aarch64-linux-gnu/qt5/QtGui -I/usr/include/aarch64-linux-gnu/qt5/QtQml -I/usr/include/aarch64-linux-gnu/qt5/QtNetwork -I/usr/include/aarch64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/aarch64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/aarch64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/aarch64-linux-gnu/7/include-fixed -I/usr/include/aarch64-linux-gnu -I/usr/include ClusterStubImpl.hpp -o moc_ClusterStubImpl.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/avees/some_ws/some-ip_image_communication/Cluster/src/moc_predefs.h -I/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/avees/some_ws/some-ip_image_communication/Cluster/src -I/home/avees/some_ws/some-ip_image_communication/src-gen-cluster -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include/CommonAPI-3.2 -I/usr/local/include -I/usr/include/opencv4 -I/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7 -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/include -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/src -I/home/avees/some_ws/some-ip_image_communication/Cluster/src/include/yolov7/plugin -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu -I/usr/local/cuda/include -I/usr/include/aarch64-linux-gnu/qt5 -I/usr/include/aarch64-linux-gnu/qt5/QtQuick -I/usr/include/aarch64-linux-gnu/qt5/QtWidgets -I/usr/include/aarch64-linux-gnu/qt5/QtMultimedia -I/usr/include/aarch64-linux-gnu/qt5/QtGui -I/usr/include/aarch64-linux-gnu/qt5/QtQml -I/usr/include/aarch64-linux-gnu/qt5/QtNetwork -I/usr/include/aarch64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/aarch64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/aarch64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/aarch64-linux-gnu/7/include-fixed -I/usr/include/aarch64-linux-gnu -I/usr/include ClusterStubImpl.hpp -o moc_ClusterStubImpl.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all: ui_cluster.h
+compiler_uic_clean:
+	-$(DEL_FILE) ui_cluster.h
+ui_cluster.h: cluster.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic cluster.ui -o ui_cluster.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_cuda_clean compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_cuda_clean compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -637,6 +650,7 @@ main.o: main.cpp ClusterStubImpl.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStubDefault.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStub.hpp \
 		../../src-gen-cluster/v1/commonapi/Cluster.hpp \
+		ui_cluster.h \
 		include/yolov7/include/config.h \
 		include/yolov7/include/model.h \
 		include/yolov7/include/cuda_utils.h \
@@ -720,6 +734,7 @@ ClusterStubImpl.o: ClusterStubImpl.cpp ClusterStubImpl.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStubDefault.hpp \
 		../../src-gen-cluster/v1/commonapi/ClusterStub.hpp \
 		../../src-gen-cluster/v1/commonapi/Cluster.hpp \
+		ui_cluster.h \
 		include/yolov7/include/config.h \
 		include/yolov7/include/model.h \
 		include/yolov7/include/cuda_utils.h \

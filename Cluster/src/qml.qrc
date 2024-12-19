@@ -8,5 +8,6 @@
         <file>image/star.png</file>
         <file>image/volk.png</file>
         <file>image/warning.png</file>
+        <file>ui/aa.png</file>
     </qresource>
 </RCC>

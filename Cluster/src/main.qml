@@ -54,16 +54,16 @@ ApplicationWindow {
             margins: 20
         }
     }
-    Image {
-        id: weatherIcon
-        width: 166
-        height: 166
-        anchors.verticalCenterOffset: -46
-        anchors.horizontalCenterOffset: 0
-        anchors.centerIn: parent
-        source: weatherAPI.weatherIcon
-        visible: showWeather
-    }
+//    Image {
+//        id: weatherIcon
+//        width: 166
+//        height: 166
+//        anchors.verticalCenterOffset: -46
+//        anchors.horizontalCenterOffset: 0
+//        anchors.centerIn: parent
+//        source: weatherAPI.weatherIcon
+//        visible: showWeather
+//    }
     Image {
         id: warnIcon
         width: 864
@@ -94,19 +94,19 @@ ApplicationWindow {
         visible: showLight
     }
 
-    Text {
-        id: temperature
-        font.pixelSize: 40
-        font.bold: true
-        font.italic: true
-        color: 'white'
-        anchors.horizontalCenter: weatherIcon.horizontalCenter
-        anchors.top: weatherIcon.bottom
-        anchors.topMargin: -40
-        text: weatherAPI.temperature + "°C"
-        anchors.horizontalCenterOffset: 1
-        visible: showWeather
-    }
+//    Text {
+//        id: temperature
+//        font.pixelSize: 40
+//        font.bold: true
+//        font.italic: true
+//        color: 'white'
+//        anchors.horizontalCenter: weatherIcon.horizontalCenter
+//        anchors.top: weatherIcon.bottom
+//        anchors.topMargin: -40
+//        text: weatherAPI.temperature + "°C"
+//        anchors.horizontalCenterOffset: 1
+//        visible: showWeather
+//    }
 
     Canvas {
         id: speedpointer
@@ -124,22 +124,22 @@ ApplicationWindow {
             // Clear the canvas
             ctx.clearRect(0, 0, width, height);
 
-            // Draw the speed bar
-            var angle = (speedReceiver.speedValue - 35) * Math.PI / 180; // Convert speed to angle
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(centerX + 160 * Math.cos(angle), centerY + 160 * Math.sin(angle));
-            ctx.lineWidth = 10;
-            ctx.strokeStyle = '#ff0000';
-            ctx.stroke();
+//            // Draw the speed bar
+//            var angle = (speedReceiver.speedValue - 35) * Math.PI / 180; // Convert speed to angle
+//            ctx.beginPath();
+//            ctx.moveTo(centerX, centerY);
+//            ctx.lineTo(centerX + 160 * Math.cos(angle), centerY + 160 * Math.sin(angle));
+//            ctx.lineWidth = 10;
+//            ctx.strokeStyle = '#ff0000';
+//            ctx.stroke();
         }
-
-        Connections {
-            target: speedReceiver
-            onSpeedValueChanged: {
-                speedpointer.requestPaint()
-            }
-        }
+//
+//        Connections {
+//            target: speedReceiver
+//            onSpeedValueChanged: {
+//                speedpointer.requestPaint()
+//            }
+//        }
     }
 
     Canvas {
@@ -157,23 +157,23 @@ ApplicationWindow {
 
             // Clear the canvas
             ctx.clearRect(0, 0, width, height);
-
-            // Draw the speed bar
-            var angle = ((rpmReceiver.rpmValue / 30) -45) * Math.PI / 180; // Convert rpm to angle
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(centerX + 135 * Math.cos(angle), centerY + 135 * Math.sin(angle));
-            ctx.lineWidth = 7;
-            ctx.strokeStyle = '#ff0000';
-            ctx.stroke();
+//
+//            // Draw the speed bar
+//            var angle = ((rpmReceiver.rpmValue / 30) -45) * Math.PI / 180; // Convert rpm to angle
+//            ctx.beginPath();
+//            ctx.moveTo(centerX, centerY);
+//            ctx.lineTo(centerX + 135 * Math.cos(angle), centerY + 135 * Math.sin(angle));
+//            ctx.lineWidth = 7;
+//            ctx.strokeStyle = '#ff0000';
+//            ctx.stroke();
         }
-
-        Connections {
-            target: rpmReceiver
-            onRpmValueChanged: {
-                rpmpointer.requestPaint()
-            }
-        }
+//
+//        Connections {
+//            target: rpmReceiver
+//            onRpmValueChanged: {
+//                rpmpointer.requestPaint()
+//            }
+//        }
     }
     Row {
         anchors.verticalCenterOffset: 486
@@ -217,40 +217,40 @@ ApplicationWindow {
             color: 'white'
         }
 
-        Connections {
-            target: buttonsReceiver
-            onButtonsValueChanged: {
-                var buttonValue = buttonsReceiver.buttonsValue;
-
-                if (buttonValue === "P" || buttonValue === "R" || buttonValue === "N" || buttonValue === "D") {
-                    bState = buttonValue;
-                    pText.color = bState === "P" ? 'red' : 'white';
-                    rText.color = bState === "R" ? 'red' : 'white';
-                    nText.color = bState === "N" ? 'red' : 'white';
-                    dText.color = bState === "D" ? 'red' : 'white';
-
-                    gearImage.visible = bState === "P";
-                    videoOutput.visible = bState === "R";
-                }
-                else if(buttonValue === "Weather"){
-                    showWeather = !showWeather;
-                    weatherAPI.requestWeather("Seoul");
-                }
-                else if(buttonValue === "Warn"){
-                    if (showWarn) {
-                        blinkTimer.stop(); // Stop blinking
-                        warnIcon.visible = false; // Ensure the icon is hidden
-                    } else {
-                        blinkTimer.start(); // Start blinking
-                    }
-                    showWarn = !showWarn;
-                }
-                else if(buttonValue === "Light"){
-                    showLight = !showLight;
-                }
-            }
-        }
-
+//        Connections {
+//            target: buttonsReceiver
+//            onButtonsValueChanged: {
+//                var buttonValue = buttonsReceiver.buttonsValue;
+//
+//                if (buttonValue === "P" || buttonValue === "R" || buttonValue === "N" || buttonValue === "D") {
+//                    bState = buttonValue;
+//                    pText.color = bState === "P" ? 'red' : 'white';
+//                    rText.color = bState === "R" ? 'red' : 'white';
+//                    nText.color = bState === "N" ? 'red' : 'white';
+//                    dText.color = bState === "D" ? 'red' : 'white';
+//
+//                    gearImage.visible = bState === "P";
+//                    videoOutput.visible = bState === "R";
+//                }
+////                else if(buttonValue === "Weather"){
+////                    showWeather = !showWeather;
+////                    weatherAPI.requestWeather("Seoul");
+////                }
+//                else if(buttonValue === "Warn"){
+//                    if (showWarn) {
+//                        blinkTimer.stop(); // Stop blinking
+//                        warnIcon.visible = false; // Ensure the icon is hidden
+//                    } else {
+//                        blinkTimer.start(); // Start blinking
+//                    }
+//                    showWarn = !showWarn;
+//                }
+//                else if(buttonValue === "Light"){
+//                    showLight = !showLight;
+//                }
+//            }
+//        }
+//
     }
 
     Image {
@@ -265,20 +265,20 @@ ApplicationWindow {
         visible: bState === "P"
     }
 
-//    Camera {
-//        id: camera
-//        deviceId: "/dev/video1"
-//    }
+    Camera {
+        id: camera
+        deviceId: "/dev/video1"
+    }
 
-//    VideoOutput {
-//        id: videoOutput
-//        width: 492 // Set width of the camera output
-//        height: 441
-//        anchors.verticalCenterOffset: -334
-//        anchors.horizontalCenterOffset: 0 // Set height of the camera output
-//        anchors.horizontalCenter: parent.horizontalCenter // Center the output horizontally
-//        anchors.verticalCenter: parent.verticalCenter // Center the output vertically
-//        source: camera
-//        visible: bState === "R"
-//    }
+    VideoOutput {
+        id: videoOutput
+        width: 492 // Set width of the camera output
+        height: 441
+        anchors.verticalCenterOffset: -334
+        anchors.horizontalCenterOffset: 0 // Set height of the camera output
+        anchors.horizontalCenter: parent.horizontalCenter // Center the output horizontally
+        anchors.verticalCenter: parent.verticalCenter // Center the output vertically
+        source: camera
+        visible: bState === "R"
+    }
 }
